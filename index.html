@@ -208,95 +208,23 @@
         font-size: 13px;
         font-weight: 750;
       }
-      .demo-card, .manual-card, .phone, .admin-panel {
+      .demo-card, .manual-card {
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: color-mix(in srgb, var(--panel) 94%, transparent);
         box-shadow: var(--shadow);
       }
       .demo-card {
-        padding: 14px;
-      }
-      .demo-layout {
-        display: grid;
-        grid-template-columns: 270px minmax(0, 1fr);
-        gap: 14px;
-      }
-      .phone {
-        min-height: 560px;
-        display: flex;
-        flex-direction: column;
         overflow: hidden;
-        background: #0b141a;
-        color: #e9edef;
+        display: block;
+        color: var(--text);
+        text-decoration: none;
       }
-      .phone-head {
-        min-height: 56px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        background: #111b21;
-        border-bottom: 1px solid rgba(255, 255, 255, .08);
+      .demo-card:hover {
+        border-color: color-mix(in srgb, var(--cyan) 58%, var(--line));
       }
-      .avatar {
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        background: var(--line-green);
-        color: #fff;
-        font-weight: 900;
-      }
-      .phone-head strong { display: block; line-height: 1.2; }
-      .phone-head span { color: #aebac1; font-size: 12px; }
-      .chat {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px 12px;
-        background:
-          linear-gradient(rgba(11, 20, 26, .94), rgba(11, 20, 26, .94)),
-          repeating-linear-gradient(45deg, transparent 0 12px, rgba(255,255,255,.03) 12px 13px);
-      }
-      .bubble {
-        max-width: 84%;
-        padding: 9px 11px;
-        border-radius: 8px;
-        font-size: 13px;
-        line-height: 1.55;
-      }
-      .bubble.user {
-        align-self: flex-end;
-        background: #005c4b;
-      }
-      .bubble.bot {
-        align-self: flex-start;
-        background: #202c33;
-      }
-      .phone-input {
-        display: flex;
-        gap: 8px;
-        padding: 10px;
-        background: #111b21;
-      }
-      .phone-input button {
-        flex: 1;
-        min-height: 36px;
-        border: 0;
-        border-radius: 999px;
-        background: var(--line-green);
-        color: #fff;
-        cursor: pointer;
-        font-weight: 800;
-      }
-      .admin-panel {
-        overflow: hidden;
-      }
-      .admin-head {
-        min-height: 48px;
+      .preview-head {
+        min-height: 54px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -304,66 +232,88 @@
         padding: 12px 14px;
         border-bottom: 1px solid var(--line);
       }
-      .admin-head span {
+      .preview-head strong {
+        display: block;
+        line-height: 1.2;
+      }
+      .preview-head span {
         color: var(--muted);
         font-family: var(--mono);
-        font-size: 12px;
-        font-weight: 700;
+        font-size: 11px;
         letter-spacing: .12em;
         text-transform: uppercase;
       }
-      .admin-body {
-        padding: 14px;
-      }
-      .tabs {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
-      }
-      .tab {
-        min-height: 34px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--panel-2);
-        color: var(--text);
-        cursor: pointer;
+      .preview-open {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
         padding: 0 10px;
+        border: 1px solid color-mix(in srgb, var(--cyan) 42%, var(--line));
+        border-radius: var(--radius);
+        color: var(--cyan);
+        font-size: 13px;
         font-weight: 800;
+        white-space: nowrap;
       }
-      .tab.active {
-        border-color: var(--line-green);
-        background: color-mix(in srgb, var(--line-green) 13%, var(--panel));
+      .preview-shot {
+        position: relative;
+        min-height: 322px;
+        background:
+          linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--panel) 98%, transparent)),
+          var(--panel-2);
       }
-      .dashboard {
+      .preview-shot img {
+        width: 100%;
+        height: 322px;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      .preview-caption {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
         display: grid;
-        gap: 10px;
+        gap: 8px;
       }
-      .stat-grid {
+      .preview-caption strong {
+        max-width: 460px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+      .preview-caption p {
+        max-width: 490px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .preview-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
+        gap: 10px;
+        padding: 12px;
       }
-      .stat, .record {
+      .preview-tile {
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: var(--panel-2);
-        padding: 10px;
+        overflow: hidden;
       }
-      .stat b {
+      .preview-tile img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        object-position: center top;
         display: block;
-        color: var(--line-green);
-        font-family: var(--mono);
-        font-size: 18px;
       }
-      .stat span, .record {
+      .preview-tile span {
+        display: block;
+        padding: 8px 9px 9px;
         color: var(--muted);
-        font-size: 13px;
-      }
-      .record strong {
-        display: block;
-        color: var(--text);
-        margin-bottom: 3px;
+        font-size: 12px;
+        font-weight: 750;
       }
       .content { padding: 34px 0 74px; }
       .section-head {
@@ -422,13 +372,13 @@
         flex-wrap: wrap;
       }
       @media (max-width: 980px) {
-        .hero, .demo-layout, .manual-grid { grid-template-columns: 1fr; }
+        .hero, .manual-grid { grid-template-columns: 1fr; }
         .hero { min-height: auto; }
-        .phone { min-height: 460px; }
       }
       @media (max-width: 680px) {
         .brand span span, .nav .hide-sm { display: none; }
-        .stat-grid { grid-template-columns: 1fr; }
+        .preview-grid { grid-template-columns: 1fr; }
+        .preview-shot, .preview-shot img { min-height: 280px; height: 280px; }
       }
     </style>
   </head>
@@ -463,35 +413,36 @@
             </div>
           </div>
 
-          <section class="demo-card" aria-label="CTOS Lite 線上展示">
-            <div class="demo-layout">
-              <div class="phone">
-                <div class="phone-head">
-                  <div class="avatar">AI</div>
-                  <div><strong>CTOS Lite</strong><span>LINE 裡的 AI 員工</span></div>
-                </div>
-                <div class="chat" id="chat"></div>
-                <div class="phone-input">
-                  <button id="nextMessage" type="button">下一段示範</button>
-                </div>
+          <a class="demo-card" href="https://ching-tech.github.io/#unified-demo" target="_blank" rel="noreferrer" aria-label="開啟擎添工業完整 AI 展示頁">
+            <div class="preview-head">
+              <div>
+                <strong>完整 AI / CTOS 展示頁</strong>
+                <span>Live showcase on ching-tech.github.io</span>
               </div>
-
-              <div class="admin-panel">
-                <div class="admin-head">
-                  <span>Web dashboard</span>
-                  <a href="https://github.com/ching-tech/ctos-lite-pages" target="_blank" rel="noreferrer">source</a>
-                </div>
-                <div class="admin-body">
-                  <div class="tabs" role="group" aria-label="後台展示分頁">
-                    <button class="tab active" data-tab="profile" type="button">人設</button>
-                    <button class="tab" data-tab="knowledge" type="button">知識庫</button>
-                    <button class="tab" data-tab="admin" type="button">管理</button>
-                  </div>
-                  <div class="dashboard" id="dashboard"></div>
-                </div>
+              <span class="preview-open">開啟完整展示</span>
+            </div>
+            <div class="preview-shot">
+              <img src="https://ching-tech.github.io/img/desktop.png" alt="CTOS Web 桌面實際展示截圖" loading="eager">
+              <div class="preview-caption">
+                <strong>這裡保留 CTOS Lite 手冊，實際產品展示請看完整 AI 首頁。</strong>
+                <p>完整頁已整合 LINE AI 個人版、企業 CTOS 桌面、知識庫、Agent、AI Log 與實際運轉展示。</p>
               </div>
             </div>
-          </section>
+            <div class="preview-grid" aria-label="完整展示頁重點截圖">
+              <div class="preview-tile">
+                <img src="https://ching-tech.github.io/img/linebot.png" alt="LINE Bot 實際展示截圖" loading="lazy">
+                <span>LINE Bot / 群組運轉</span>
+              </div>
+              <div class="preview-tile">
+                <img src="https://ching-tech.github.io/img/knowledge.png" alt="企業知識庫展示截圖" loading="lazy">
+                <span>企業知識庫 / RAG</span>
+              </div>
+              <div class="preview-tile">
+                <img src="https://ching-tech.github.io/img/agent.png" alt="AI Agent 展示截圖" loading="lazy">
+                <span>AI Agent / HIS 整合</span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -562,71 +513,6 @@
         localStorage.setItem("ctos-lite-theme", next);
       });
 
-      const chat = document.querySelector("#chat");
-      const nextMessage = document.querySelector("#nextMessage");
-      const scenes = [
-        [
-          ["user", "早安，今天出門前幫我整理一下。"],
-          ["bot", "早安。今天 09:30 有供應商會議，10:40 後可能下雨；我建議 08:55 出發，並帶上昨天那份報價比較表。"]
-        ],
-        [
-          ["user", "把這份設備保養 SOP 記到公司知識庫。"],
-          ["bot", "已整理成 Markdown，標籤為「設備保養 / 點檢 / 產線」。之後問我保養週期、異常處置或備品規格，我會優先引用這份 SOP。"]
-        ],
-        [
-          ["user", "幫我查上次客戶問的 RGV 節拍估算。"],
-          ["bot", "我找到 2 筆相關記憶：4/10 討論雙側庫位取放，4/12 補充伸叉深度。若用保守序列模式，建議先抓 42-48 秒 / cycle。"]
-        ]
-      ];
-      let sceneIndex = 0;
-
-      function renderChat() {
-        chat.innerHTML = scenes[sceneIndex].map(([who, text]) => `<div class="bubble ${who}">${text}</div>`).join("");
-      }
-      nextMessage.addEventListener("click", () => {
-        sceneIndex = (sceneIndex + 1) % scenes.length;
-        renderChat();
-      });
-      renderChat();
-
-      const dashboard = document.querySelector("#dashboard");
-      const tabs = [...document.querySelectorAll(".tab")];
-      const views = {
-        profile: `
-          <div class="stat-grid">
-            <div class="stat"><b>50</b><span>每日免費 AI 次數</span></div>
-            <div class="stat"><b>14d</b><span>新用戶試用期</span></div>
-            <div class="stat"><b>LINE</b><span>零安裝入口</span></div>
-          </div>
-          <div class="record"><strong>人設設定</strong>AI 名稱、稱呼方式、語言風格、時區、回覆長度都可由使用者調整。</div>
-          <div class="record"><strong>長期記憶</strong>自動保存偏好、常用資料與重要脈絡，並支援到期清除。</div>
-        `,
-        knowledge: `
-          <div class="stat-grid">
-            <div class="stat"><b>RAG</b><span>公司知識搜尋</span></div>
-            <div class="stat"><b>Drive</b><span>雲端同步</span></div>
-            <div class="stat"><b>Media</b><span>下載 / 轉錄</span></div>
-          </div>
-          <div class="record"><strong>知識來源</strong>PDF、Word、Excel、CSV、Markdown、網頁與對話筆記。</div>
-          <div class="record"><strong>回答策略</strong>優先引用公司知識與個人記憶，再補充即時搜尋結果。</div>
-        `,
-        admin: `
-          <div class="stat-grid">
-            <div class="stat"><b>Users</b><span>用戶管理</span></div>
-            <div class="stat"><b>Logs</b><span>AI 呼叫紀錄</span></div>
-            <div class="stat"><b>Groups</b><span>LINE 群組控管</span></div>
-          </div>
-          <div class="record"><strong>營運控制</strong>訂閱狀態、試用天數、群組允許回應與公司知識匯入。</div>
-          <div class="record"><strong>系統監控</strong>查看健康檢查、資料庫、媒體任務與 Token 用量。</div>
-        `
-      };
-
-      function setTab(name) {
-        tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === name));
-        dashboard.innerHTML = views[name];
-      }
-      tabs.forEach((tab) => tab.addEventListener("click", () => setTab(tab.dataset.tab)));
-      setTab("profile");
     </script>
   </body>
 </html>
